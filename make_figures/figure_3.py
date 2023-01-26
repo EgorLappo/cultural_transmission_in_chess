@@ -1,0 +1,53 @@
+import numpy as np
+import pandas as pd
+
+from matplotlib import pyplot as plt
+import seaborn as sns
+
+sns.set_theme(context='paper', style='ticks', palette='colorblind')
+
+def make_ply_streamplot_ax(ply, ax, lab, title, col = 'Moves', thresh = 0.02):
+    ply_int = ply.reset_index(drop=True).fillna(0).copy() #int for internal
+    ply_int['Count'] = ply_int['Count'] / ply_int.groupby('Year')['Count'].transform('sum')
+
+    mean_freqs = ply_int.groupby(col).agg({'Count':'mean'}).Count
+    rare_moves = [m for m in list(ply_int[col]) if mean_freqs[m] < thresh]
+    ply_int[col] = ply_int[col].replace({m:'other' for m in rare_moves})
+    ply_int = ply_int.groupby(['Year',col]).agg({'Count':'sum', 'Result': 'mean'}).reset_index()
+
+    ply_piv = ply_int.pivot(index='Year',columns=col, values='Count').reset_index()
+    ply_piv = ply_piv.fillna(0)
+ 
+    ax.stackplot(list(ply_piv.Year), np.array(ply_piv[ply_piv.columns[1:]]).T,
+                labels=ply_piv.columns[1:], alpha=0.8, baseline='zero')
+    ax.legend(bbox_to_anchor=(1.04,1.04), loc="upper left")
+    #ax.set_title('Opening strategy relative frequencies')
+    ax.set_xlabel('Year')
+    ax.set_ylabel('Fraction of Games')
+    ax.set_ylim(0,1)
+    ax.set_xlim(1971,2021)
+
+    ax.text(-0.2, 1.1, lab, transform=ax.transAxes, fontsize=12, fontweight='bold', va='top')
+    ax.set_title(title, fontweight="bold")
+
+ply1 = pd.read_csv('../data/csv/caissa_counts_by_ply1.csv', index_col=0)
+
+ply4 = pd.read_csv('../data/csv/caissa_counts_by_ply3.csv', index_col=0)
+sicilian = ply4[(ply4.Ply1 == 'e4') & (ply4.Ply2 == 'c5')]
+
+ply11 = pd.read_csv('../data/csv/caissa_counts_by_ply11.csv', index_col=0)
+ndorf = ply11[(ply11.Ply1 == 'e4') & (ply11.Ply2 == 'c5') & (ply11.Ply3 == 'Nf3') & (ply11.Ply4 == 'd6') & (ply11.Ply5 == 'd4') & (ply11.Ply6 == 'cxd4') & (ply11.Ply7 == 'Nxd4') & (ply11.Ply8 == 'Nf6') & (ply11.Ply9 == 'Nc3') & (ply11.Ply10 == 'a6')]
+
+ply7 = pd.read_csv('../data/csv/caissa_counts_by_ply7.csv', index_col=0)
+qgd = ply7[(ply7.Ply1 == 'd4') & (ply7.Ply2 == 'd5') & (ply7.Ply3 == 'c4') & (ply7.Ply4 == 'e6') & (ply7.Ply5 == 'Nc3') & (ply7.Ply6 == 'Nf6')]
+
+fig, axs = plt.subplots(4, figsize=(4,12), sharex=False)
+
+make_ply_streamplot_ax(ply1, axs[0], 'A', 'Starting Position')
+make_ply_streamplot_ax(sicilian, axs[1], 'B', 'Sicilian Defense, ply 3')
+make_ply_streamplot_ax(ndorf, axs[2], 'C', 'Najdorf Sicilian, ply 11')
+make_ply_streamplot_ax(qgd, axs[3], 'D', 'Queen\'s Gambit Declined, ply 7')
+
+fig.subplots_adjust(hspace=.4)
+
+fig.savefig('../figures/figure_3.pdf', bbox_inches='tight')

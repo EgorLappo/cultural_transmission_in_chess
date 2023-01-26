@@ -1,0 +1,10 @@
+data/csv/*
+data/pgn/*
+model/data/*
+model/model
+**/*.RDS
+**/fit.csv
+.RData
+**/.RData
+.Rhistory
+**/.Rhistory
