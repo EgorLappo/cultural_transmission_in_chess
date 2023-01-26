@@ -2,7 +2,6 @@ library(tidyverse)
 library(cmdstanr)
 library(posterior)
 library(bayesplot)
-library(doParallel)
 
 run_stan_model <- function(strategy_name) {
     # load data
