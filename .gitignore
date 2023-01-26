@@ -1,5 +1,3 @@
-data/csv/*
-data/pgn/*
 model/data/*
 model/model
 **/*.RDS
