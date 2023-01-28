@@ -57,23 +57,19 @@ dgb_e4_response.columns = ['Player', 'DYear', 'Elo', 'Result', 'Ply2_Entropy', '
 
 ## MAKE PLOT 
 
-fig, axs = plt.subplots(2, 2, figsize = (6,4), constrained_layout=True) 
+fig, axs = plt.subplots(2, figsize = (3,4), constrained_layout=True) 
 
-sns.lineplot(data=dgb_first_move, x = 'DYear', y='Ply1_Entropy', ax = axs[0,0])
-sns.lineplot(data=dgb_first_move, x = 'DYear', y='Ply1_Heterozygosity', ax = axs[1,0])
-sns.lineplot(data=dgb_e4_response, x = 'DYear', y='Ply2_Entropy', ax = axs[0,1])
-sns.lineplot(data=dgb_e4_response, x = 'DYear', y='Ply2_Heterozygosity', ax = axs[1,1])
+#sns.lineplot(data=dgb_first_move, x = 'DYear', y='Ply1_Entropy', ax = axs[0,0])
+sns.lineplot(data=dgb_first_move, x = 'DYear', y='Ply1_Heterozygosity', ax = axs[0])
+#sns.lineplot(data=dgb_e4_response, x = 'DYear', y='Ply2_Entropy', ax = axs[0,1])
+sns.lineplot(data=dgb_e4_response, x = 'DYear', y='Ply2_Heterozygosity', ax = axs[1])
 
-
-axs[0,0].set_title('Ply 1: First Move')
-axs[0,1].set_title('Ply 2: e4 Response')
-
-for (i,j), ax in np.ndenumerate(axs):
-    ax.set_xlabel('Years in dataset')
+axs[0].set_title('Ply 1: First Move')
+axs[1].set_title('Ply 2: e4 Response')
 
 for i in range(2):
-    axs[0,i].set_ylabel('Entropy')
-    axs[1,i].set_ylabel('Heterozygosity')
+    axs[i].set_xlabel('Years in dataset')
+    axs[i].set_ylabel('Heterozygosity')
 
 fig.suptitle("Move choice diversity throughout the career")
 

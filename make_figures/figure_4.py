@@ -111,7 +111,7 @@ axs[1].legend().remove()
 
 sns.lineplot(data=fitness, x='Year', y='fitness', hue='Move', ax=axs[2], alpha=0.3, palette='colorblind')
 sns.lineplot(data=fitness[fitness.Move.map(lambda x: x in ['Nf6', 'd5'])], x='Year', y='fitness', hue='Move', ax=axs[2], palette='colorblind')
-axs[2].set_ylabel("")
+axs[2].set_ylabel("$f_i(x^i_t/N_t)$")
 axs[2].set_title("Fitness of a strategy")
 axs[2].legend().remove()
 
@@ -226,7 +226,7 @@ p = sns.color_palette('colorblind', n_colors=4)
 aux_pal = [p[0], p[-1]]
 sns.lineplot(data=fitness[fitness.Move.map(lambda x: x in ['Bb5','d4'])], x='Year', y='fitness', hue='Move', ax=axs[2], palette=aux_pal)
 
-axs[2].set_ylabel("")
+axs[2].set_ylabel("$f_i(x^i_t/N_t)$")
 axs[2].set_title("Fitness of a strategy")
 axs[2].legend().remove()
 
@@ -343,7 +343,7 @@ aux_pal = [p[0], p[8]]
 sns.lineplot(data=fitness[fitness.Move.map(lambda x: x in ['Bc4','h3'])], x='Year', y='fitness', hue='Move', ax=axs[2], palette=aux_pal)
 
 axs[2].set_xlim(1980,2018)
-axs[2].set_ylabel("")
+axs[2].set_ylabel("$f_i(x^i_t/N_t)$")
 axs[2].set_title("Fitness of a strategy")
 axs[2].legend().remove()
 

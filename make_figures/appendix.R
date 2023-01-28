@@ -6,7 +6,7 @@ make_fitness_curve_plot <- function(data, title) {
     geom_rect(aes(ymin=ll,ymax=hh), fill="cadetblue1", alpha = 0.4) +
     geom_rect(aes(ymin=l,ymax=h), fill="cadetblue3", alpha=0.8) +
     geom_line(aes(x=mid_bp,y=m)) +
-    facet_grid(rows=vars(response), scales = "free_y") + 
+    facet_grid(rows=vars(response)) + #, scales = "free_y") + 
     scale_x_continuous(trans="log", limits = c(0.0001,1), breaks=c(0.01, 0.1, 0.25,0.5,1)) + 
     theme_bw() + theme(axis.text.x = element_text(angle = 45)) +
     xlab("Move frequency") + ylab("") + ggtitle(title)
@@ -57,7 +57,7 @@ ggsave("../figures/appendix/qp_fitness_curves.pdf", qp_f,w=3,h=5,unit="in")
 kp_f <- make_fitness_curve_plot(kp_fitness_data, "King's Pawn, ply 5")
 ggsave("../figures/appendix/kp_fitness_curves.pdf",kp_f,w=3,h=4,unit="in")
 
-naj_f <- make_fitness_curve_plot(naj_fitness_data,"Najdorf Sicilian, ply 11")
+naj_f <- make_fitness_curve_plot(naj_fitness_data,"Najdorf Sicilian, ply 11") 
 ggsave("../figures/appendix/najdorf_fitness_curves.pdf",naj_f,w=3,h=8,unit="in")
 
 qp_b <- make_beta_plot(qp_beta_data, "Queen's Pawn, ply 2")
@@ -66,5 +66,5 @@ ggsave("../figures/appendix/qp_betas_plot.pdf", qp_b,w=5,h=5,unit="in")
 kp_b <- make_beta_plot(kp_beta_data, "King's Pawn, ply 5")
 ggsave("../figures/appendix/kp_betas_plot.pdf", kp_b,w=5,h=4,unit="in")
 
-naj_b <- make_beta_plot(naj_beta_data, "Najdorf Sicilian, ply 11")
+naj_b <- make_beta_plot(naj_beta_data, "Najdorf Sicilian, ply 11") 
 ggsave("../figures/appendix/najdorf_betas_plot.pdf",naj_b,w=5,h=6.5,unit="in")

@@ -36,7 +36,7 @@ sns.lineplot(data=d3, x='Year', y='Result', ax=axs[1,0])
 
 axs[1,0].set_ylim(-0.125, 0.125)
 axs[1,0].axhline(y=0, color='r', linestyle='--')
-axs[1,0].set_ylabel("Average result")
+axs[1,0].set_ylabel("Average outcome")
 
 # plot game length 
 d4 = d.groupby('Year').PlyCount.mean().reset_index()

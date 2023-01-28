@@ -43,7 +43,7 @@ qgd = ply7[(ply7.Ply1 == 'd4') & (ply7.Ply2 == 'd5') & (ply7.Ply3 == 'c4') & (pl
 
 fig, axs = plt.subplots(4, figsize=(4,12), sharex=False)
 
-make_ply_streamplot_ax(ply1, axs[0], 'A', 'Starting Position')
+make_ply_streamplot_ax(ply1, axs[0], 'A', 'Starting Position, ply 1')
 make_ply_streamplot_ax(sicilian, axs[1], 'B', 'Sicilian Defense, ply 3')
 make_ply_streamplot_ax(ndorf, axs[2], 'C', 'Najdorf Sicilian, ply 11')
 make_ply_streamplot_ax(qgd, axs[3], 'D', 'Queen\'s Gambit Declined, ply 7')

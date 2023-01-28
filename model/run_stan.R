@@ -37,8 +37,10 @@ run_stan_model <- function(strategy_name) {
 
     freq_matrix <- count_matrix / rowSums(count_matrix)
 
+    # freq_quantiles_by_strategy <- apply(freq_matrix, 2,
+    #        quantile, probs = c(0.25, 0.5, 0.75))
     freq_quantiles_by_strategy <- apply(freq_matrix, 2,
-           quantile, probs = c(0.25, 0.5, 0.75))
+             function(x) quantile(x[x!=0], probs = c(0.25, 0.5, 0.75)))
     freq_quantiles_by_strategy <- t(rbind(0, freq_quantiles_by_strategy, 1))
 
     data_list <- list(
