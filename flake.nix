@@ -1,3 +1,10 @@
+## notes
+# without the following lines, dplyr does not work 
+#     mkdir -p "$(pwd)/_libs"
+#     export R_LIBS_USER="$(pwd)/_libs"
+## 
+
+
 {
   description = "A very basic flake";
 
@@ -65,6 +72,8 @@
 
       packages = {
         makeFigures = pkgs.writeScriptBin "makeFigures" ''
+          mkdir -p "$(pwd)/_libs"
+          export R_LIBS_USER="$(pwd)/_libs"
           cd make_figures
           ${python-env}/bin/python figure_2.py
           ${python-env}/bin/python figure_3.py
