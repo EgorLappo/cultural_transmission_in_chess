@@ -57,7 +57,7 @@
       cmdstanpath = "${cmdstan}/opt/cmdstan";
     in rec {
       devShells.default = with pkgs; mkShell {
-        name = "R";
+        name = "chess_model";
         buildInputs = [
           R-env python-env cmdstan
         ];
@@ -69,42 +69,5 @@
           export PYTHONPATH="${python-env}/bin/python"
         '';
       };
-
-      packages = {
-        makeFigures = pkgs.writeScriptBin "makeFigures" ''
-          mkdir -p "$(pwd)/_libs"
-          export R_LIBS_USER="$(pwd)/_libs"
-          cd make_figures
-          ${python-env}/bin/python figure_2.py
-          ${python-env}/bin/python figure_3.py
-          ${python-env}/bin/python figure_4.py
-          ${Rscriptpath} --vanilla figure_5.R 
-          ${Rscriptpath} --vanilla figure_6.R
-        '';
-      
-        runModel = pkgs.writeScriptBin "runModel" ''
-          mkdir -p "$(pwd)/_libs"
-          export R_LIBS_USER="$(pwd)/_libs"
-          cd model
-          ${python-env}/bin/python prepare_data.py
-          CMDSTAN=${cmdstanpath} ${Rscriptpath} --vanilla run_stan.R
-          cd ..
-        '';
-
-        generateTables = pkgs.writeScriptBin "generateTables" ''
-          cd data_processing
-          ${python-env}/bin/python clean.py
-          ${python-env}/bin/python generate_tables.py
-          cd ..
-        '';
-
-        parsePGN = pkgs.writeScriptBin "parsePGN" ''
-          cd data_processing
-          ${python-env}/bin/python parse.py
-          cd ..
-        '';
-      };
-
-      defaultPackage = packages.makeFigures;
     });
 }
