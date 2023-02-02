@@ -83,6 +83,8 @@
         '';
       
         runModel = pkgs.writeScriptBin "runModel" ''
+          mkdir -p "$(pwd)/_libs"
+          export R_LIBS_USER="$(pwd)/_libs"
           cd model
           ${python-env}/bin/python prepare_data.py
           CMDSTAN=${cmdstanpath} ${Rscriptpath} --vanilla run_stan.R
