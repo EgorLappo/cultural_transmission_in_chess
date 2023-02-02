@@ -109,6 +109,6 @@ player_dict = dd(list)
 for i, row in top_players.iterrows():
     player_dict[row.Year].append(row.Player)
 
-prepare_dataset(d, '1. e4 e5 2. Nf3 Nc6', 'kings_pawn_ply_5', top_players_dict=player_dict)
 prepare_dataset(d, '1. d4', 'queens_pawn_ply_2', top_players_dict=player_dict)
+prepare_dataset(d, '1. e4 c6 2. d4 d5', 'carokann_ply_5', top_players_dict=player_dict)
 prepare_dataset(d, '1. e4 c5 2. Nf3 d6 3. d4 cxd4 4. Nxd4 Nf6 5. Nc3 a6', 'sicilian_najdorf_ply_11', top_players_dict=player_dict)

@@ -17,15 +17,22 @@ def make_ply_streamplot_ax(ply, ax, lab, title, col = 'Moves', thresh = 0.02):
 
     ply_piv = ply_int.pivot(index='Year',columns=col, values='Count').reset_index()
     ply_piv = ply_piv.fillna(0)
+    
+    # trick to have the order of colors match the order of labels
+    data = -np.array(ply_piv[ply_piv.columns[1:]]).T
+    labels = ply_piv.columns[1:]
  
-    ax.stackplot(list(ply_piv.Year), np.array(ply_piv[ply_piv.columns[1:]]).T,
-                labels=ply_piv.columns[1:], alpha=0.8, baseline='zero')
+    ax.stackplot(list(ply_piv.Year), data,
+                labels=labels, alpha=1, baseline='zero')
     ax.legend(bbox_to_anchor=(1.04,1.04), loc="upper left")
     #ax.set_title('Opening strategy relative frequencies')
     ax.set_xlabel('Year')
     ax.set_ylabel('Fraction of Games')
-    ax.set_ylim(0,1)
-    ax.set_xlim(1971,2021)
+    # "matching order" trick continues
+    ax.set_ylim(-1,0)
+    ax.set_xlim(1971,2019)
+    ax.set_xticks([1971,1980,1990,2000,2010,2019])
+    ax.set_yticks([-1 + i*0.2 for i in range(6)], [f"{i*0.2:2.2}" for i in range(6)])
 
     ax.text(-0.2, 1.1, lab, transform=ax.transAxes, fontsize=12, fontweight='bold', va='top')
     ax.set_title(title, fontweight="bold")

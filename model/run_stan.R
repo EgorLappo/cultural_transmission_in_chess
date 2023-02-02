@@ -105,12 +105,12 @@ summarize_fits <- function(strategy_name) {
   fitness_draws$mid_bp <- fitness_draws$upper_bp/2 + fitness_draws$lower_bp/2
   
   write_csv(fitness_draws, paste0("model_results/",strategy_name,"/mcmc_intervals_fitness.csv"))
-  fit$draws(variables=c("beta_win", "beta_win_top", "beta_freq_top")) %>% as_draws_df() %>% mcmc_intervals_data() %>%  write_csv(paste0("model_results/",strategy_name,"/mcmc_intervals_beta.csv"))
+  fit$draws(variables=c("beta_win", "beta_win_top", "beta_freq_top")) %>% as_draws_df() %>% mcmc_intervals_data(prob_outer = 0.99) %>%  write_csv(paste0("model_results/",strategy_name,"/mcmc_intervals_beta.csv"))
 }
 
 
-strategy_names <- c("kings_pawn_ply_5",
-                    "queens_pawn_ply_2",
+strategy_names <- c("queens_pawn_ply_2",
+                    "carokann_ply_5",
                     "sicilian_najdorf_ply_11")
 
 for (strategy in strategy_names) {

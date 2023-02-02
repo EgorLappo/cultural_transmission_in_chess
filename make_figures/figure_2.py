@@ -6,7 +6,7 @@ import seaborn as sns
 sns.set_theme(context='paper', style='ticks', palette='colorblind')
 
 d = pd.read_csv('../data/csv/caissa_clean.csv', index_col=0, low_memory=False)
-d = d[d.Year <= 2020]
+d = d[d.Year <= 2019]
 
 fig, axs = plt.subplots(2, 2, figsize=(7, 5), constrained_layout=True)
 
@@ -49,6 +49,10 @@ axs[1,1].set_ylabel("Average ply count")
 axs[0,0].yaxis.set_major_formatter(ticker.FuncFormatter(lambda x, pos: '{:,.0f}'.format(x/1000) + 'K'))
 axs[0,1].yaxis.set_major_formatter(ticker.FuncFormatter(lambda x, pos: '{:,.0f}'.format(x/1000) + 'K'))
 
+axs[0,0].set_xticks([1971,1980,1990,2000,2010,2019])
+axs[0,1].set_xticks([1971,1980,1990,2000,2010,2019])
+axs[1,0].set_xticks([1971,1980,1990,2000,2010,2019])
+axs[1,1].set_xticks([1971,1980,1990,2000,2010,2019])
 
 axs[0,0].text(-0.3, 1.1, "A", transform=axs[0,0].transAxes, fontsize=12, fontweight='bold', va='top')
 axs[0,1].text(-0.3, 1.1, "B", transform=axs[0,1].transAxes, fontsize=12, fontweight='bold', va='top')
