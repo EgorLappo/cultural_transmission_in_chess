@@ -3,6 +3,12 @@ library(cmdstanr)
 library(posterior)
 library(bayesplot)
 
+env <- Sys.getenv()
+
+if (!is.na(env["NIX"])) {
+  set_cmdstan_path(env["CMDSTANPATH"])
+}
+
 run_stan_model <- function(strategy_name) {
     # load data
     count_data <- read.csv(paste0("data/",
