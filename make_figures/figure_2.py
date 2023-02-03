@@ -7,7 +7,7 @@ import seaborn as sns
 
 
 sns.set_theme(context='paper', style='ticks', palette='colorblind')
-rc('font',**{'family':'sans-serif','sans-serif':['Helvetica']})
+rc('font',**{'family':'sans-serif','sans-serif':['Helvetica Neue']})
 
 d = pd.read_csv('../data/csv/caissa_clean.csv', index_col=0, low_memory=False)
 d = d[d.Year <= 2019]
@@ -91,10 +91,10 @@ axs[1].set_xticks([1971,1980,1990,2000,2010,2019])
 axs[2].set_xticks([1971,1980,1990,2000,2010,2019])
 
 
-# axs[0].text(-0.3, 1.1, "A", transform=axs[0].transAxes, fontsize=12, fontweight='bold', va='top')
-# axs[1].text(-0.3, 1.1, "B", transform=axs[1].transAxes, fontsize=12, fontweight='bold', va='top')
-# axs[2].text(-0.3, 1.1, "C", transform=axs[2].transAxes, fontsize=12, fontweight='bold', va='top')
-# axs[3].text(-0.3, 1.1, "D", transform=axs[3].transAxes, fontsize=12, fontweight='bold', va='top')
+axs[0].text(-0.4, 1.0, "A", transform=axs[0].transAxes, fontsize=12, fontweight='bold', va='top')
+axs[1].text(-0.4, 1.0, "B", transform=axs[1].transAxes, fontsize=12, fontweight='bold', va='top')
+axs[2].text(-0.4, 1.0, "C", transform=axs[2].transAxes, fontsize=12, fontweight='bold', va='top')
+axs[3].text(-0.4, 1.0, "D", transform=axs[3].transAxes, fontsize=12, fontweight='bold', va='top')
 
 fig.align_ylabels()
 

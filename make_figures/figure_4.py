@@ -5,7 +5,7 @@ from matplotlib import rc
 import numpy as np
 
 sns.set_theme(context='paper', style='ticks', palette='colorblind')
-rc('font',**{'family':'sans-serif','sans-serif':['Helvetica']})
+rc('font',**{'family':'sans-serif','sans-serif':['Helvetica Neue']})
 
 PLOT_RATIOS = True
 

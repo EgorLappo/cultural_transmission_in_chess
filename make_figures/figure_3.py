@@ -6,7 +6,7 @@ from matplotlib import rc
 import seaborn as sns
 
 sns.set_theme(context='paper', style='ticks', palette='colorblind')
-rc('font',**{'family':'sans-serif','sans-serif':['Helvetica']})
+rc('font',**{'family':'sans-serif','sans-serif':['Helvetica Neue']})
 
 
 def make_ply_streamplot_ax(ply, ax, lab, title, col = 'Moves', thresh = 0.02):
@@ -37,7 +37,7 @@ def make_ply_streamplot_ax(ply, ax, lab, title, col = 'Moves', thresh = 0.02):
     ax.set_xticks([1971,1980,1990,2000,2010,2019])
     ax.set_yticks([-1 + i*0.2 for i in range(6)], [f"{i*0.2:2.2}" for i in range(6)])
 
-    ax.text(-0.2, 1.1, lab, transform=ax.transAxes, fontsize=12, fontweight='bold', va='top')
+    ax.text(-0.25, 1, lab, transform=ax.transAxes, fontsize=12, fontweight='bold', va='top')
     ax.set_title(title, fontweight="bold")
 
 ply1 = pd.read_csv('../data/csv/caissa_counts_by_ply1.csv', index_col=0)
