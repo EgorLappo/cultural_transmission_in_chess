@@ -103,7 +103,7 @@ summarize_fits <- function(strategy_name) {
   breakpoints_strat[,1] <- 0.0001
   r <- ncol(breakpoints_strat) - 1
 
-  fitness_draws <- fit$draws(variables="fitness_values") %>% as_draws_df() %>% mcmc_intervals_data()
+  fitness_draws <- fit$draws(variables="fitness_values") %>% as_draws_df() %>% mcmc_intervals_data(prob_outer = 0.98)
   # "spread out" (from matrix to vector) the things we have to this big dataframe
   fitness_draws$response <- rep(responses, r)
   fitness_draws$lower_bp <- as.vector(breakpoints_strat)[1:(n*r)]
@@ -111,7 +111,7 @@ summarize_fits <- function(strategy_name) {
   fitness_draws$mid_bp <- fitness_draws$upper_bp/2 + fitness_draws$lower_bp/2
   
   write_csv(fitness_draws, paste0("model_results/",strategy_name,"/mcmc_intervals_fitness.csv"))
-  fit$draws(variables=c("beta_win", "beta_win_top", "beta_freq_top")) %>% as_draws_df() %>% mcmc_intervals_data(prob_outer = 0.99) %>%  write_csv(paste0("model_results/",strategy_name,"/mcmc_intervals_beta.csv"))
+  fit$draws(variables=c("beta_win", "beta_win_top", "beta_freq_top")) %>% as_draws_df() %>% mcmc_intervals_data(prob_outer = 0.98) %>%  write_csv(paste0("model_results/",strategy_name,"/mcmc_intervals_beta.csv"))
 }
 
 
@@ -120,7 +120,7 @@ strategy_names <- c("queens_pawn_ply_2",
                     "sicilian_najdorf_ply_11")
 
 for (strategy in strategy_names) {
-  run_stan_model(strategy)
+  # run_stan_model(strategy)
   summarize_fits(strategy)
 }
 

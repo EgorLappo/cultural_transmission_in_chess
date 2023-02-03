@@ -43,12 +43,12 @@ for i in range(N):
         fitness[i,j,:] = draws[fitness_cols[i*39+j]]
 
 mp_means = np.mean(mp, axis=2)
-mp_q5 = np.quantile(mp, 0.05, axis=2)
-mp_q95 = np.quantile(mp, 0.95, axis=2)
+mp_q5 = np.quantile(mp, 0.01, axis=2)
+mp_q95 = np.quantile(mp, 0.99, axis=2)
 
 fitness_means = np.mean(fitness, axis=2)
-fitness_q5 = np.quantile(fitness, 0.05, axis=2)
-fitness_q95 = np.quantile(fitness, 0.95, axis=2)
+fitness_q5 = np.quantile(fitness, 0.01, axis=2)
+fitness_q95 = np.quantile(fitness, 0.99, axis=2)
 
 # make dataframes out of arrays
 mp_means = pd.DataFrame(mp_means.T, columns=[str(x) for x in range(N)])
@@ -95,7 +95,7 @@ response_freqs = response_freqs[response_freqs['Move'] != 'other']
 
 fig, axs = plt.subplots(3, 1, figsize=(3.3,7), sharex = True)
 
-sns.lineplot(data=response_freqs, x='Year', y='Frequency', hue='Move', ax=axs[0])
+sns.lineplot(data=response_freqs, x='Year', y='Frequency', hue='Move', ax=axs[0], alpha = 0.8)
 
 axs[0].set_ylim(0,1)
 axs[0].set_ylabel("Frequency")
@@ -112,7 +112,7 @@ for move in moves:
     sns.lineplot(data=mp[mp['Move'] == move], x='Year', y='q5', ax=axs[1], color='gray', alpha=0.3)
     sns.lineplot(data=mp[mp['Move'] == move], x='Year', y='q95', ax=axs[1], color='gray', alpha=0.3)
     
-sns.lineplot(data=mp, x='Year', y='mean_prob', hue='Move', ax=axs[1], palette='colorblind')
+sns.lineplot(data=mp, x='Year', y='mean_prob', hue='Move', ax=axs[1], palette='colorblind', alpha = 0.8)
 
 axs[1].set_ylim(0,1)
 axs[1].set_ylabel("Probability")
@@ -162,12 +162,12 @@ for i in range(N):
         fitness[i,j,:] = draws[fitness_cols[i*39+j]]
 
 mp_means = np.mean(mp, axis=2)
-mp_q5 = np.quantile(mp, 0.05, axis=2)
-mp_q95 = np.quantile(mp, 0.95, axis=2)
+mp_q5 = np.quantile(mp, 0.01, axis=2)
+mp_q95 = np.quantile(mp, 0.99, axis=2)
 
 fitness_means = np.mean(fitness, axis=2)
-fitness_q5 = np.quantile(fitness, 0.05, axis=2)
-fitness_q95 = np.quantile(fitness, 0.95, axis=2)
+fitness_q5 = np.quantile(fitness, 0.01, axis=2)
+fitness_q95 = np.quantile(fitness, 0.99, axis=2)
 
 # make dataframes out of arrays
 mp_means = pd.DataFrame(mp_means.T, columns=[str(x) for x in range(N)])
@@ -215,7 +215,7 @@ response_freqs = response_freqs[response_freqs['Move'] != 'other']
 
 fig, axs = plt.subplots(3, 1, figsize=(3.3,7), sharex = True)
 
-sns.lineplot(data=response_freqs, x='Year', y='Frequency', hue='Move', ax=axs[0], palette='colorblind')
+sns.lineplot(data=response_freqs, x='Year', y='Frequency', hue='Move', ax=axs[0], palette='colorblind', alpha = 0.8)
 
 axs[0].set_ylim(0,1)
 axs[0].set_ylabel("Frequency")
@@ -231,7 +231,7 @@ for move in moves:
     sns.lineplot(data=mp[mp['Move'] == move], x='Year', y='q5', ax=axs[1], color='gray', alpha=0.3)
     sns.lineplot(data=mp[mp['Move'] == move], x='Year', y='q95', ax=axs[1], color='gray', alpha=0.3)
     
-sns.lineplot(data=mp, x='Year', y='mean_prob', hue='Move', ax=axs[1], palette='colorblind')
+sns.lineplot(data=mp, x='Year', y='mean_prob', hue='Move', ax=axs[1], palette='colorblind', alpha = 0.8)
 
 axs[1].set_ylim(0,1)
 axs[1].set_ylabel("Probability")
@@ -287,12 +287,12 @@ for i in range(N):
         fitness[i,j,:] = draws[fitness_cols[i*39+j]]
 
 mp_means = np.mean(mp, axis=2)
-mp_q5 = np.quantile(mp, 0.05, axis=2)
-mp_q95 = np.quantile(mp, 0.95, axis=2)
+mp_q5 = np.quantile(mp, 0.01, axis=2)
+mp_q95 = np.quantile(mp, 0.99, axis=2)
 
 fitness_means = np.mean(fitness, axis=2)
-fitness_q5 = np.quantile(fitness, 0.05, axis=2)
-fitness_q95 = np.quantile(fitness, 0.95, axis=2)
+fitness_q5 = np.quantile(fitness, 0.01, axis=2)
+fitness_q95 = np.quantile(fitness, 0.99, axis=2)
 
 # make dataframes out of arrays
 mp_means = pd.DataFrame(mp_means.T, columns=[str(x) for x in range(N)])
@@ -340,7 +340,7 @@ response_freqs = response_freqs[response_freqs['Move'] != 'other']
 
 fig, axs = plt.subplots(3, 1, figsize=(3.3,7), sharex = True)
 
-sns.lineplot(data=response_freqs, x='Year', y='Frequency', hue='Move', ax=axs[0])
+sns.lineplot(data=response_freqs, x='Year', y='Frequency', hue='Move', ax=axs[0], alpha = 0.8)
 
 axs[0].set_ylim(0,1)
 axs[0].set_ylabel("Frequency")
@@ -356,7 +356,7 @@ for move in moves:
     sns.lineplot(data=mp[mp['Move'] == move], x='Year', y='q5', ax=axs[1], color='gray', alpha=0.3)
     sns.lineplot(data=mp[mp['Move'] == move], x='Year', y='q95', ax=axs[1], color='gray', alpha=0.3)
     axs[1].fill_between(mp[mp['Move'] == move]['Year'], mp[mp['Move'] == move]['q5'], mp[mp['Move'] == move]['q95'], alpha=0.3)
-sns.lineplot(data=mp, x='Year', y='mean_prob', hue='Move', ax=axs[1])
+sns.lineplot(data=mp, x='Year', y='mean_prob', hue='Move', ax=axs[1], alpha = 0.8)
     
 axs[1].set_ylim(0,1)
 axs[1].set_ylabel("Probability")

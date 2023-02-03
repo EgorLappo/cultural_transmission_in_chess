@@ -5,7 +5,7 @@ library(patchwork)
 make_fitness_curve_plot <- function(data, title) {
   fitness_plot_grid <- ggplot(data, aes(xmin=lower_bp, xmax=upper_bp)) +
     geom_rect(aes(ymin=ll,ymax=hh), fill="cadetblue1", alpha = 0.4) +
-    geom_rect(aes(ymin=l,ymax=h), fill="cadetblue3", alpha=0.8) +
+    geom_rect(aes(ymin=l,ymax=h), fill="cadetblue4", alpha=0.8) +
     geom_line(aes(x=mid_bp,y=m)) +
     facet_grid(rows=vars(response)) + #, scales = "free_y") + 
     scale_x_continuous(trans="log", limits = c(0.0001,1), breaks=c(0.01, 0.1, 0.25,0.5,1)) + 
