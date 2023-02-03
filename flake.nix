@@ -42,15 +42,28 @@
       };
       Rscriptpath = "${R-env}/bin/Rscript";
       
+      mpltern = pkgs.python3Packages.buildPythonPackage rec {
+        pname = "mpltern";
+        version = "0.4.0";
+        src = pkgs.python3.pkgs.fetchPypi {
+          inherit pname version;
+          sha256 = "d550a5ab0d4dade805c6c03720d86fb509847662e6d88aa4158584b9fec69e20";
+        };
+        propagatedBuildInputs = with pkgs.python3Packages; [
+          matplotlib
+        ];
+      };
       dontTestPackage = drv: drv.overridePythonAttrs (old: { doCheck = false; });
       python-env = pkgs.python3.withPackages (ps: with ps; [ 
+        pip
         chess
         tqdm
         numpy
         pandas
         matplotlib
-        (dontTestPackage seaborn) # tests fail due to different numerical results on intel vs ARM
+        (dontTestPackage seaborn) # tests fail on darwin due to different numerical results on intel vs ARM
         unidecode
+        mpltern
       ]);
 
       cmdstan = pkgs.cmdstan;

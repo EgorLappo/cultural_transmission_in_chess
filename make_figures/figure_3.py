@@ -2,9 +2,12 @@ import numpy as np
 import pandas as pd
 
 from matplotlib import pyplot as plt
+from matplotlib import rc
 import seaborn as sns
 
 sns.set_theme(context='paper', style='ticks', palette='colorblind')
+rc('font',**{'family':'sans-serif','sans-serif':['Helvetica Neue']})
+
 
 def make_ply_streamplot_ax(ply, ax, lab, title, col = 'Moves', thresh = 0.02):
     ply_int = ply.reset_index(drop=True).fillna(0).copy() #int for internal
@@ -34,7 +37,7 @@ def make_ply_streamplot_ax(ply, ax, lab, title, col = 'Moves', thresh = 0.02):
     ax.set_xticks([1971,1980,1990,2000,2010,2019])
     ax.set_yticks([-1 + i*0.2 for i in range(6)], [f"{i*0.2:2.2}" for i in range(6)])
 
-    ax.text(-0.2, 1.1, lab, transform=ax.transAxes, fontsize=12, fontweight='bold', va='top')
+    ax.text(-0.25, 1, lab, transform=ax.transAxes, fontsize=12, fontweight='bold', va='top')
     ax.set_title(title, fontweight="bold")
 
 ply1 = pd.read_csv('../data/csv/caissa_counts_by_ply1.csv', index_col=0)
@@ -48,7 +51,7 @@ ndorf = ply11[(ply11.Ply1 == 'e4') & (ply11.Ply2 == 'c5') & (ply11.Ply3 == 'Nf3'
 ply7 = pd.read_csv('../data/csv/caissa_counts_by_ply7.csv', index_col=0)
 qgd = ply7[(ply7.Ply1 == 'd4') & (ply7.Ply2 == 'd5') & (ply7.Ply3 == 'c4') & (ply7.Ply4 == 'e6') & (ply7.Ply5 == 'Nc3') & (ply7.Ply6 == 'Nf6')]
 
-fig, axs = plt.subplots(4, figsize=(4,12), sharex=False)
+fig, axs = plt.subplots(4, figsize=(3.3,12), sharex=False)
 
 make_ply_streamplot_ax(ply1, axs[0], 'A', 'Starting Position, ply 1')
 make_ply_streamplot_ax(sicilian, axs[1], 'B', 'Sicilian Defense, ply 3')
@@ -56,5 +59,7 @@ make_ply_streamplot_ax(ndorf, axs[2], 'C', 'Najdorf Sicilian, ply 11')
 make_ply_streamplot_ax(qgd, axs[3], 'D', 'Queen\'s Gambit Declined, ply 7')
 
 fig.subplots_adjust(hspace=.4)
+
+fig.align_ylabels()
 
 fig.savefig('../figures/figure_3.pdf', bbox_inches='tight')

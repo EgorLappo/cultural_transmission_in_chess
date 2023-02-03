@@ -1,9 +1,11 @@
 import pandas as pd 
 import seaborn as sns
 import matplotlib.pyplot as plt
+from matplotlib import rc
 import numpy as np
 
 sns.set_theme(context='paper', style='ticks', palette='colorblind')
+rc('font',**{'family':'sans-serif','sans-serif':['Helvetica Neue']})
 
 PLOT_RATIOS = True
 
@@ -130,7 +132,10 @@ axs[0].text(-0.2, 1.1, 'A', transform=axs[0].transAxes, size=12, weight='bold')
 axs[1].text(-0.2, 1.1, 'B', transform=axs[1].transAxes, size=12, weight='bold')
 axs[2].text(-0.2, 1.1, 'C', transform=axs[2].transAxes, size=12, weight='bold')
 
-fig.suptitle(strategy_clean_name, fontsize=12)
+# make bold title
+fig.suptitle(strategy_clean_name, fontsize=12, fontweight='bold')
+
+fig.align_ylabels()
 
 fig.savefig('../figures/figure_4_1.pdf', bbox_inches='tight')
 
@@ -254,7 +259,9 @@ axs[0].text(-0.2, 1.1, 'D', transform=axs[0].transAxes, size=12, weight='bold')
 axs[1].text(-0.2, 1.1, 'E', transform=axs[1].transAxes, size=12, weight='bold')
 axs[2].text(-0.2, 1.1, 'F', transform=axs[2].transAxes, size=12, weight='bold')
 
-fig.suptitle(strategy_clean_name, fontsize=12)
+fig.suptitle(strategy_clean_name, fontsize=12, fontweight='bold')
+
+fig.align_ylabels()
 
 fig.savefig('../figures/figure_4_2.pdf', bbox_inches='tight')
 
@@ -383,6 +390,8 @@ handles, labels = axs[0].get_legend_handles_labels()
 
 #fig.legend(handles, labels, loc='upper left', bbox_to_anchor=(1,1.05))
 
-fig.suptitle(strategy_clean_name, fontsize=12)
+fig.suptitle(strategy_clean_name, fontsize=12, fontweight='bold')
+
+fig.align_ylabels()
 
 fig.savefig('../figures/figure_4_3.pdf', bbox_inches='tight')
