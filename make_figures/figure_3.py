@@ -6,7 +6,6 @@ from matplotlib import rc
 import seaborn as sns
 
 sns.set_theme(context='paper', style='ticks', palette='colorblind')
-rc('font',**{'family':'sans-serif','sans-serif':['Helvetica Neue']})
 
 
 def make_ply_streamplot_ax(ply, ax, lab, title, col = 'Moves', thresh = 0.02):

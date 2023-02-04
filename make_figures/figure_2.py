@@ -2,12 +2,10 @@ import pandas as pd
 from matplotlib import pyplot as plt
 from matplotlib import rc
 import matplotlib.ticker as ticker
-import mpltern
+#import mpltern
 import seaborn as sns
 
-
 sns.set_theme(context='paper', style='ticks', palette='colorblind')
-rc('font',**{'family':'sans-serif','sans-serif':['Helvetica Neue']})
 
 d = pd.read_csv('../data/csv/caissa_clean.csv', index_col=0, low_memory=False)
 d = d[d.Year <= 2019]
@@ -19,17 +17,18 @@ d1 = d.groupby('Year').pgn.count().reset_index()
 d1['Games in dataset'] = d1.pgn
 
 sns.lineplot(data=d1, x='Year', y='Games in dataset', ax=axs[0])
+axs[0].set_ylabel("Game count")
 
 # plot number of players
 d2 = []
 for year in d.Year.unique():
     dyear = d[d.Year == year]
     unique_players = set(dyear.Black.unique()).union(set(dyear.White.unique()))
-    d2.append({'Year': year, 'Unique players in dataset': len(unique_players)})
+    d2.append({'Year': year, 'Player count': len(unique_players)})
 
 d2 = pd.DataFrame.from_records(d2)
 
-sns.lineplot(data=d2, x='Year', y='Unique players in dataset', ax=axs[1])
+sns.lineplot(data=d2, x='Year', y='Player count', ax=axs[1])
 
 axs[1].set_ylim(0, 20000)
 

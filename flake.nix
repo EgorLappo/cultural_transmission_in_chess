@@ -38,6 +38,7 @@
           posterior
           bayesplot
           scales
+          ggh4x
         ];
       };
       Rscriptpath = "${R-env}/bin/Rscript";

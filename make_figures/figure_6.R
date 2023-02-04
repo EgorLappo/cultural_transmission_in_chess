@@ -1,5 +1,6 @@
 library(tidyverse)
 library(scales)
+library(ggh4x)
 
 make_beta_plot <- function(data, title) {
   p <- ggplot(data) + 
@@ -7,7 +8,7 @@ make_beta_plot <- function(data, title) {
     geom_segment(aes(x=l, xend = h, y=variable, yend=variable), linewidth=1.2) + 
     geom_point(aes(x=m, y=variable), size=2) + 
     geom_vline(xintercept=0, color="gray", alpha=0.4) +
-    facet_wrap(vars(response), ncol=1) +
+    facet_wrap2(vars(response),nrow=10,ncol=1,trim_blank=F) + 
     xlab("Coefficient") + ylab("Value") + ggtitle(title) +
     scale_y_discrete(labels=label_parse()) +
     theme_bw()
@@ -36,10 +37,10 @@ ck_beta_data$variable <- c(rep("beta[win]",6),rep("beta[top50-win]",6),rep("beta
 naj_beta_data$variable <- c(rep("beta[win]",10),rep("beta[top50-win]",10),rep("beta[top50-freq]",10))
 
 qp_b <- make_beta_plot(qp_beta_data, "Queen's Pawn, ply 2")
-ggsave("../figures/figure_6a.pdf", qp_b,w=2.5,h=5.5,unit="in")
+ggsave("../figures/figure_6a.pdf", qp_b,w=3.3,h=8,unit="in")
 
 ck_b <- make_beta_plot(ck_beta_data, "Caro-Kann, ply 5")+xlim(-0.3,0.3)
-ggsave("../figures/figure_6b.pdf", ck_b,w=2.5,h=5,unit="in")
+ggsave("../figures/figure_6b.pdf", ck_b,w=3.3,h=8,unit="in")
 
 naj_b <- make_beta_plot(naj_beta_data, "Najdorf Sicilian, ply 11") 
-ggsave("../figures/figure_6c.pdf",naj_b,w=2.5,h=8,unit="in")
+ggsave("../figures/figure_6c.pdf",naj_b,w=3.3,h=8,unit="in")
