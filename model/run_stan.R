@@ -29,9 +29,7 @@ run_stan_model <- function(strategy_name) {
   ))
 
   # make matrices
-  count_matrix <- as.matrix(count_data[, 2:ncol(count_data)])
-
-  count_matrix[count_matrix == 0] <- 1
+  count_matrix <- as.matrix(count_data[, 2:ncol(count_data)]) 
 
   win_matrix <- as.matrix(win_data[, 2:ncol(win_data)])
   win_matrix <- scale(win_matrix)
@@ -71,7 +69,7 @@ run_stan_model <- function(strategy_name) {
     response_frequencies = freq_matrix,
     win_rates = win_matrix,
     top_player_win_rates = top_player_win_matrix,
-    alpha_prior = rep(0, ncol(count_matrix)),
+    alpha_prior = rep(1, ncol(count_matrix)),
     R = 4,
     breakpoints = freq_quantiles_by_strategy
   )
