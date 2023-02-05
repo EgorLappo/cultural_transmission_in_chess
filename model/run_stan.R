@@ -69,7 +69,7 @@ run_stan_model <- function(strategy_name) {
     response_frequencies = freq_matrix,
     win_rates = win_matrix,
     top_player_win_rates = top_player_win_matrix,
-    alpha_prior = rep(0.0001, ncol(count_matrix)),
+    alpha_prior = rep(1, ncol(count_matrix)),
     R = 4,
     breakpoints = freq_quantiles_by_strategy
   )
