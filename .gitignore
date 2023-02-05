@@ -8,3 +8,4 @@ model/model
 **/.Rhistory
 data/csv/*
 .vscode
+_libs
