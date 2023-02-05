@@ -7,7 +7,7 @@ To reproduce the figures in the paper, follow these steps:
 
 1. Download the dataset from [Caissabase](http://caissabase.co.uk), unzip it.
 
-2. Use [Scid vs. PC](https://scidvspc.sourceforge.net) to export all games into a PGN file. Save the result as `data/pgn/caissa.pgn` (Use [this guide](https://chess.stackexchange.com/questions/13116/how-do-you-convert-a-scid-database-into-a-pgn-database)). Exported `.pgn` is available at **[this GDrive link](https://drive.google.com/drive/folders/1rBVvs7kwwfCKchg5htEdzNUZlxkBiRO7?usp=sharing)** in case you don't want to install weird chess software just to replicate someone's work.
+2. Use [Scid vs. PC](https://scidvspc.sourceforge.net) to export all games into a PGN file. Save the result as `data/pgn/caissa.pgn` (use [this guide](https://chess.stackexchange.com/questions/13116/how-do-you-convert-a-scid-database-into-a-pgn-database)). Exported `.pgn` is available at **[this GDrive link](https://drive.google.com/drive/folders/1rBVvs7kwwfCKchg5htEdzNUZlxkBiRO7?usp=sharing)** in case you don't want to install weird chess software just to replicate someone's work.
 
 3. Run `parse.py`, `clean.py`, and `generate_tables.py` from the `data_processing/` folder. The required packages can be installed with `pip3 install -r requirements.txt`. 
 The parsing takes **a long time** (~11 hrs), since it parses all games to verify that the pgn is coded correctly. I have made **cleaned `.csv` files** available for download at **[this GDrive link](https://drive.google.com/drive/folders/1rBVvs7kwwfCKchg5htEdzNUZlxkBiRO7?usp=sharing)**. If you use these files, you only need to run `generate_tables.py`.
