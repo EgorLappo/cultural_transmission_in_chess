@@ -17,4 +17,7 @@ This takes **a long time** (~11 hrs), since it parses all games to verify that t
 5. Run each of the scripts in the `make_figures/` folder to generate all figures.
 
 6. Email me at `elappo@stanford.edu` with any questions or issues.
-uu
+
+## Nix users
+
+This directory is a Nix flake, so you can use `nix develop` to get the environment to reproduce my analysis. Just download the data and run the scripts! This currently only works for `x86` systems due to a pre-compiled header issue with the `cmdstan` package, so most probably this won't work on Apple Silicon Macs.
