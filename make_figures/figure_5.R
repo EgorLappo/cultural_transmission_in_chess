@@ -31,14 +31,14 @@ qp_fitness_data$strategy <- "Queen's Pawn, ply 2"
 ck_fitness_data$strategy <- "Caro-Kann, ply 5"
 naj_fitness_data$strategy <- "Najdorf sicilian, ply 11"
 
-qp_f <- make_fitness_curve_plot(qp_fitness_data, "Queen's Pawn, ply 2") + ylim(0.15,0.35) + coord_fixed(ratio = 0.2)
+qp_f <- make_fitness_curve_plot(qp_fitness_data, "Queen's Pawn, ply 2")
 ggsave("../figures/figure_5a.pdf", qp_f, w = 3.3, h = 9, unit = "in")
 ggsave("../figures/figure_5a.png", qp_f, w = 3.3, h = 9, unit = "in", dpi = 500)
 
-ck_f <- make_fitness_curve_plot(ck_fitness_data, "Caro-Kann, ply 5") + ylim(0.0,0.8) + coord_fixed(ratio = 0.8)
+ck_f <- make_fitness_curve_plot(ck_fitness_data, "Caro-Kann, ply 5")
 ggsave("../figures/figure_5b.pdf", ck_f, w = 3.3, h = 9, unit = "in")
 ggsave("../figures/figure_5b.png", ck_f, w = 3.3, h = 9, unit = "in", dpi = 500)
 
-naj_f <- make_fitness_curve_plot(naj_fitness_data, "Najdorf Sicilian, ply 11") + scale_y_continuous(limits = c(0.1, 0.5), breaks = c(0.1, 0.3, 0.5)) + coord_fixed(ratio = 0.4)
+naj_f <- make_fitness_curve_plot(naj_fitness_data, "Najdorf Sicilian, ply 11") + scale_y_continuous(limits = c(0.1, 0.5), breaks = c(0.1, 0.3, 0.5))
 ggsave("../figures/figure_5c.pdf", naj_f, w = 3.3, h = 9, unit = "in")
 ggsave("../figures/figure_5c.png", naj_f, w = 3.3, h = 9, unit = "in", dpi = 500)
