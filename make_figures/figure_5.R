@@ -7,7 +7,6 @@ make_fitness_curve_plot <- function(data, title) {
     geom_rect(aes(ymin = ll, ymax = hh), fill = "cadetblue1", alpha = 0.4) +
     geom_rect(aes(ymin = l, ymax = h), fill = "cadetblue4", alpha = 0.8) +
     geom_line(aes(x = mid_bp, y = m)) +
-    facet_wrap2(vars(response), nrow = 10, ncol = 1, trim_blank = FALSE) +
     scale_x_continuous(trans = "log", limits = c(0.0001, 1), breaks = c(0.01, 0.1, 0.25, 0.5, 1)) +
     xlab("Move frequency") +
     ylab(expression(f[i])) +
@@ -19,7 +18,8 @@ make_fitness_curve_plot <- function(data, title) {
       axis.title.y = element_text(margin = margin(0, 5, 0, 0)),
       plot.title = element_text(face = "bold", size = 15, hjust = 0.5),
       strip.text = element_text(size = 12)
-    )
+    ) + 
+    facet_wrap2(vars(response), nrow = 10, ncol = 1, trim_blank = FALSE)
   return(fitness_plot_grid)
 }
 
