@@ -153,17 +153,19 @@ axs[2].set_title("Frequency-dependent fitness")
 axs[2].legend().remove()
 
 # add bold letters to subfigures
-axs[0].text(-0.225, 1.1, 'A', transform=axs[0].transAxes,
+axs[0].text(-0.225, 1, 'A', transform=axs[0].transAxes,
             size=12, weight='bold')
-axs[1].text(-0.225, 1.1, 'B', transform=axs[1].transAxes,
+axs[1].text(-0.225, 1, 'B', transform=axs[1].transAxes,
             size=12, weight='bold')
-axs[2].text(-0.225, 1.1, 'C', transform=axs[2].transAxes,
+axs[2].text(-0.225, 1, 'C', transform=axs[2].transAxes,
             size=12, weight='bold')
 
 # make bold title
 fig.suptitle(strategy_clean_name, fontsize=12, fontweight='bold')
 
 fig.align_ylabels()
+
+fig.subplots_adjust(hspace=0.35)
 
 fig.savefig('../figures/figure_4_1.pdf', bbox_inches='tight')
 
@@ -303,16 +305,18 @@ axs[2].legend().remove()
 
 
 # add bold letters to subfigures
-axs[0].text(-0.225, 1.1, 'D', transform=axs[0].transAxes,
+axs[0].text(-0.225, 1, 'D', transform=axs[0].transAxes,
             size=12, weight='bold')
-axs[1].text(-0.225, 1.1, 'E', transform=axs[1].transAxes,
+axs[1].text(-0.225, 1, 'E', transform=axs[1].transAxes,
             size=12, weight='bold')
-axs[2].text(-0.225, 1.1, 'F', transform=axs[2].transAxes,
+axs[2].text(-0.225, 1, 'F', transform=axs[2].transAxes,
             size=12, weight='bold')
 
 fig.suptitle(strategy_clean_name, fontsize=12, fontweight='bold')
 
 fig.align_ylabels()
+
+fig.subplots_adjust(hspace=0.35)
 
 fig.savefig('../figures/figure_4_2.pdf', bbox_inches='tight')
 
@@ -454,11 +458,11 @@ axs[2].set_title("Frequency-dependent fitness")
 axs[2].legend().remove()
 
 # add bold letters to subfigures
-axs[0].text(-0.225, 1.1, 'G', transform=axs[0].transAxes,
+axs[0].text(-0.225, 1, 'G', transform=axs[0].transAxes,
             size=12, weight='bold')
-axs[1].text(-0.225, 1.1, 'H', transform=axs[1].transAxes,
+axs[1].text(-0.225, 1, 'H', transform=axs[1].transAxes,
             size=12, weight='bold')
-axs[2].text(-0.225, 1.1, 'I', transform=axs[2].transAxes,
+axs[2].text(-0.225, 1, 'I', transform=axs[2].transAxes,
             size=12, weight='bold')
 
 handles, labels = axs[0].get_legend_handles_labels()
@@ -468,5 +472,7 @@ handles, labels = axs[0].get_legend_handles_labels()
 fig.suptitle(strategy_clean_name, fontsize=12, fontweight='bold')
 
 fig.align_ylabels()
+
+fig.subplots_adjust(hspace=0.35)
 
 fig.savefig('../figures/figure_4_3.pdf', bbox_inches='tight')
