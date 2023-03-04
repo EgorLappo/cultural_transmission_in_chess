@@ -1,4 +1,7 @@
 # Cultural transmission of move choice in chess
+
+Code accompanying the manuscript "Cultural transmission of move choice in chess" by Lappo, Rosenberg, and Feldman (2023). Preprint available at [https://arxiv.org/abs/2302.10375](https://arxiv.org/abs/2302.10375).
+
 ## Model and figure code
 
 To reproduce the figures in the paper, follow these steps:
