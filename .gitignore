@@ -6,6 +6,6 @@ model/model
 **/.RData
 .Rhistory
 **/.Rhistory
-data/csv/*
+data/*
 .vscode
 _libs
