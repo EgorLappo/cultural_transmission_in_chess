@@ -1,0 +1,17 @@
+model/data/*
+model/model
+model_custom_dm/data/*
+model_custom_dm/model
+**/*.RDS
+**/fit.csv
+.RData
+**/.RData
+.Rhistory
+**/.Rhistory
+data/pgn
+data/csv/*.csv
+.vscode
+_libs
+.Rproj.user
+*.Rproj
+.direnv

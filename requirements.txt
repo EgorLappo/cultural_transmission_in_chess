@@ -1,0 +1,8 @@
+chess==1.9.4
+matplotlib==3.6.3
+numpy==1.24.1
+pandas==1.5.2
+seaborn==0.12.2
+tqdm==4.64.1
+Unidecode==1.3.6
+
