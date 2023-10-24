@@ -1,24 +1,18 @@
 # Cultural transmission of move choice in chess
 
-Code accompanying the manuscript "Cultural transmission of move choice in chess" by Lappo, Rosenberg, and Feldman (2023). Preprint available at [arxiv.org/abs/2302.10375](https://arxiv.org/abs/2302.10375).
+Code accompanying the manuscript "Cultural transmission of move choice in chess" by Lappo, Rosenberg, and Feldman (2023), available at [doi.org/10.1098/rspb.2023.1634](https://doi.org/10.1098/rspb.2023.1634).
 
 ## Reproducing analysis with Nix (preferred)
 
 First, please ensure that you are working on a machine with an Intel or AMD processor (i.e. `x86_64` architecture). (If you are working on the new Mac computer, follow the guide below that does not use Nix. This is because the `cmdstan` package has issues with selecting the right precompiled headers.)
 
-**0.** [Install nix](https://zero-to-nix.com/concepts/nix-installer) and clone this repository to your machine. To do this, first run
+**0.** [Install nix](https://zero-to-nix.com/concepts/nix-installer) and download this repository. To do this, first run
 ```
 curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
 ```
 to install nix.
 
-Make sure your machine has [`git`](https://git-scm.com/downloads) and [`git-lfs`](https://git-lfs.com) installed, and then run any of the following commands to clone the repository.
-```
-gh repo clone EgorLappo/cultural_transmission_in_chess
-git clone https://github.com/EgorLappo/cultural_transmission_in_chess.git
-```
-
-Finally, run `git lfs fetch` to make sure the data file is downloaded.
+Then, download the repository that includes the input data file from Zenodo.
 
 **1.** Run `nix develop` to log into a shell with all necessary programs and packages.
 
