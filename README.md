@@ -12,7 +12,7 @@ curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix 
 ```
 to install nix.
 
-Then, download the repository that includes the input data file from Zenodo.
+Then, download the repository that includes the input data file from Zenodo: [zenodo.org/doi/10.5281/zenodo.10038192](https://zenodo.org/doi/10.5281/zenodo.10038192).
 
 **1.** Run `nix develop` to log into a shell with all necessary programs and packages.
 
