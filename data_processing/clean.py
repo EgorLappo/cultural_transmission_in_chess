@@ -132,21 +132,3 @@ d.PlyCount = d.pgn.map(f)
 
 d = d.sort_values('Year').reset_index(drop=True)
 d.to_csv('../data/csv/caissa_clean.csv')
-
-# now we need to filter out players who played less than 500 games for individual-based comparisons
-
-players = list(set(d.White).union(set(d.Black)))
-players.sort()
-players = pd.DataFrame(players, columns=['Player'])
-
-white_counts = dict(d.White.value_counts())
-black_counts = dict(d.Black.value_counts())
-
-players['GameCounts'] = players.Player.map(lambda name: white_counts.get(name,0) + black_counts.get(name,0))
-players = players.sort_values(by='GameCounts', ascending=False)
-
-remaining_players = list(players[players.GameCounts > 500].Player)
-
-d.loc[d.White.isin(remaining_players) & d.Black.isin(remaining_players)]\
-    .reset_index(drop=True)\
-        .to_csv('../data/csv/caissa_clean_only_frequent_players.csv')
