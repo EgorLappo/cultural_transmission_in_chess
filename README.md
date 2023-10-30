@@ -16,13 +16,7 @@ Then, download the repository that includes the input data file from Zenodo: [ze
 
 **1.** Run `nix develop` to log into a shell with all scripts and packages necessary for processing data, fitting the model of move choice, and generating all figures. **Note:** this may take a long time.
 
-**2.** Decompress the data file by running
-
-```
-cd data/csv
-ouch decompress caissa_clean.tar.gz
-```
-
+**2.** Locate the data file `data/csv/caissa_clean.csv`. 
 This file is the exact dataset we used to fit the model and draw figures, containing 3448853 games. If you want to access the original database of games, it is available from [Caissabase](http://caissabase.co.uk). You will need to use [Scid vs. PC](https://scidvspc.sourceforge.net) to export all games into a PGN file and put it into `data/pgn` (use [this guide](https://chess.stackexchange.com/questions/13116/how-do-you-convert-a-scid-database-into-a-pgn-database)). Then, run scripts `parse.py` and `clean.py` from the `data_processing` folder to produce the `.csv` table `caissa_clean.csv`. You do not need to run `parse.py` and `clean.py` if you use the `.csv` file we provide on Zenodo. Note that [Caissabase](http://caissabase.co.uk) data may be updated in the future by retroactively adding more games, in which case the results can be slightly different.
 
 All the `.csv` files we use in our analysis are also duplicated at **[this GDrive link](https://drive.google.com/drive/folders/1rBVvs7kwwfCKchg5htEdzNUZlxkBiRO7?usp=sharing)**.
